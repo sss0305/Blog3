@@ -5,23 +5,20 @@
 
   <form action="/new" method="post">
 
-  <div class="mb-3">
+ <!--  <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input type="email" name="email" placeholder="example@example.com" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
   </div>
-  <br>
+  <br> -->
 
   <div class="form-group">
-    <label for="exampleFormControlTextarea1" style="width: 400 px;">Ваше сообщение</label>
-    <textarea name= "content" class="form-control" placeholder="Введите ваш текст" id="exampleFormControlTextarea1" rows="5"></textarea value="<%= @text %>">
+    <label for="exampleFormControlTextarea1">Ваше сообщение</label>
+    <textarea name= "content" class="form-control" placeholder="Введите ваш текст" id="exampleFormControlTextarea1" rows="5"></textarea value="<%= @content %>">
   </div>
 
-
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Согласен с условиями</label>
-  </div>
   <button type="submit" class="btn btn-success">OK!</button>
 
 </form>
+
+

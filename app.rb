@@ -10,6 +10,7 @@ def init_db
  @db.results_as_hash = true 
 end
 
+# вызывается каждый раз при перезагрузке любой страницы
 before do
 	init_db
 end
@@ -18,7 +19,7 @@ configure do
 	init_db
 	@db.execute 'CREATE TABLE if not exists "posts" (
 	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
-	"created_date"	TEXT,
+	"created_date"	DATE,
 	"content"	TEXT 
 );'
 end
@@ -33,9 +34,12 @@ get '/new' do
 end
 
 post '/new' do
-    content = params[:content]
-    email = params[:email]
+    @content = params[:content]
+    if @content.length < 15
+    	@error = "Type text more than 15 letters. #{15-@content.length} letters left."
+    	return erb :new
+    end
 
-    erb "You typed #{content}"
+    erb "You typed #{@content}"
 
 end
