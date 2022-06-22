@@ -2,37 +2,11 @@
 <p>Enjoy reading<p>
 </br>
 
-
 <% @results.each do |post| %>
 	<%= post ['content'] %>
 	</br>
 	Created <%= post ['created_date'] %>
+	</br>
+	<a href="/post/<%= post ['id']%>">Comments</a>
 	<hr/>
 <% end %>
-
-
-
-<table class="table table-hover">
-
-
-   <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Post date</th>
-      <th scope="col">Content</th>
-    </tr>
-  </thead>
-
-<% @results.each do |row| %>
-
-  <tbody>
-  <tr>
-  	<td><%= row['id'] %></td>
-    <td><%= row['created_date'] %></td>
-    <td><%= row['content'] %></td>
-  </tr>
-</tbody>
-
-<% end %>
-
-</table>
