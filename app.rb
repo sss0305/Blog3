@@ -10,3 +10,11 @@ end
 get '/new' do
   erb :new
 end
+
+post '/new' do
+    content = params[:content]
+    email = params[:email]
+
+    erb "You typed #{content}"
+
+end
