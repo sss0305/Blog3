@@ -9,3 +9,23 @@ Displaying results for post with id <%= @row['id']%>
 	Created <%= @row ['created_date'] %>
 	</br>
 	<hr/>
+<h3>Comments</h3>
+
+<form action="/details/	<%= @row ['id'] %>
+" method="post">
+
+ <!--  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" name="email" placeholder="example@example.com" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <br> -->
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Ваше сообщение</label>
+    <textarea name= "content" class="form-control" placeholder="Type text here" id="exampleFormControlTextarea1" rows="5"></textarea value="<%= @content %>">
+  </div>
+
+  <button type="submit" class="btn btn-success">Add comment</button>
+
+</form>
