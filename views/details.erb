@@ -9,7 +9,7 @@ Displaying results for post with id <%= @row['id']%>
 	Created <%= @row ['created_date'] %>
 	</br>
 	<hr/>
-<h3>Comments</h3>
+<h3>Type your comment</h3>
 
 <form action="/details/	<%= @row ['id'] %>
 " method="post">
@@ -29,3 +29,13 @@ Displaying results for post with id <%= @row['id']%>
   <button type="submit" class="btn btn-success">Add comment</button>
 
 </form>
+</br>
+<h3>Comments</h3>
+
+<% @comments.each do |comment| %>
+	<%= comment ['content'] %>
+	</br>
+	<span style="font-size: 75%;"> Created <%= comment ['created_date'] %></span>
+	</br>
+	<hr/>
+<% end %>
