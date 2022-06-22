@@ -29,7 +29,7 @@ configure do
 	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
 	"created_date"	DATE,
 	"content"	TEXT,
-	post_id INTEGER
+	"post_id" INTEGER
 );'
 end
 
@@ -71,11 +71,20 @@ get '/details/:post_id' do
 	erb :details
 end
 
-#обработчик постзапроса, браузер отправляет данные, мы приниммаем
+
+#обработчик постзапроса, браузер отправляет данные, мы принимаем
+
 post '/details/:post_id' do
 	post_id = params[:post_id]
 	content = params[:content]
-	erb "you typed comment #{content} for post ID#{post_id}"
+
+	#сохранение данных в бд
+	@db.execute 'insert into comments (created_date, content, post_id) values (datetime(),?,?)', [content, post_id]
+
+	
+	redirect to ('/details/' + post_id)
+
+	#erb "you typed comment #{content} for post ID#{post_id}"
 
 
 end
