@@ -79,13 +79,22 @@ end
 
 post '/details/:post_id' do
 	post_id = params[:post_id]
-	content = params[:content]
+	ccontent = params[:content]
+
+	if ccontent.length < 5
+    	@error = "Type text more than 15 letters. #{15-ccontent.length} letters left."
+    	erb :details
+
+    else
+    	@db.execute 'insert into comments (created_date, content, post_id) values (datetime(),?,?)', [ccontent, post_id]
+		redirect to ('/details/' + post_id)
+    end
+
+    #erb :details
+
 
 	#сохранение данных в бд
-	@db.execute 'insert into comments (created_date, content, post_id) values (datetime(),?,?)', [content, post_id]
-
 	
-	redirect to ('/details/' + post_id)
 
 	#erb "you typed comment #{content} for post ID#{post_id}"
 
